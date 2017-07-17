@@ -12,8 +12,12 @@ class App extends React.Component{
     super(props);
     //create a state object for state instances
     this.state = {
-      cowsay: '',
+      cowsay: cowsay.say({
+        text: faker.lorem.words(20),
+      }),
     }
+    //make the handler use the current context instance
+    this.handleButtonClick = this.handleButtonClick.bind(this);
   };
 
   //handler method for the click action on button
@@ -22,8 +26,8 @@ class App extends React.Component{
     this.setState(state => {
       return {
         cowsay: cowsay.say({
-          text: faker.lorem.words(10),
-        }) 
+          text: faker.lorem.words(20),
+        })
       };
     });
   };
@@ -35,6 +39,7 @@ class App extends React.Component{
     <div>
       <h1>Generate Cowsay Lorem</h1>
       <button onClick={this.handleButtonClick}>click me</button>
+      <pre>{this.state.cowsay}</pre>
     </div>
     );
   };
