@@ -1,0 +1,48 @@
+$primary-color: #007991;
+$secondary-color: #439A86;
+$tertiery-color: #BCD8C1;
+$white-color: #ffffff;
+$black-color: #030000;
+
+* {
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 1em;
+  font-style: normal;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $tertiery-color;
+
+}
+
+h1 {
+  text-align: center;
+  font-size: 3em;
+  color: $white-color;
+  background-color: $primary-color;
+  border: .1em solid $black-color;
+}
+
+button {
+  width: 4em;
+  font-size: 2em;
+  border: .01em solid $black-color;
+  margin-top: 1em;
+}
+
+pre {
+  background-color: $secondary-color;
+  padding: 1em;
+  border-left: 4em solid $tertiery-color;
+  border-right: 4em solid $tertiery-color;
+  margin-top: 1em;
+  text-align: center;
+}
+
+div{
+  text-align: center;
+}
