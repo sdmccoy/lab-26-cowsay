@@ -1,5 +1,8 @@
 'use strict';
 
+const HtmlPlugin = require('html-webpack-plugin');
+const ExtractPlugin = require('extract-text-webpack-plugin');
+
 module.exports = {
   //will tell webpack where to load the app from, the mainjs
   entry: `${__dirname}/src/main.js`,
@@ -15,6 +18,25 @@ module.exports = {
 
   plugins: [
     //constructor that adds dynamic script/link tags to index.html
-    new 
-  ]
+    new HtmlPlugin({template: `${__dirname}/src/index.html`}),
+    //constructor that makes a bundle from our sass style
+    new ExtractPlugin('bundle-[hash].css'),
+  ],
+   module: {
+     //configure/set rules for the loaders
+     rules: [
+       //take our js extension files and turn them from es6 to es5 using babel
+       {
+         //regex for the extension
+         test: /\.js$/,
+         exclude: /node_modules/,
+         loader: 'babel-loader',
+       },
+       //turn our sass/scss in to css
+       {
+         test: /\.scss$/,
+         loader: ExtractPlugin.extract(['css-loader', 'sass-loader']),
+       },
+     ],
+   },
 };
